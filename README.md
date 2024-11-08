@@ -61,10 +61,17 @@ su mpi
 
 Run the `create_hosts.sh` script to create the `hosts.txt` file in the user's home directory.
 
-This script will create a list of IP addresses and slots in the `hosts.txt` file.
+Make the script executable:
 
 ```bash
-./scripts/create_hosts.sh <start_ip> <number_of_hosts>
+chmod +x create_hosts.sh
+```
+
+Run the script in the main node:
+
+
+```bash
+./create_hosts.sh <start_ip> <number_of_hosts>
 ```
 
 
