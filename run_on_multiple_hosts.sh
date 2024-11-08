@@ -75,7 +75,7 @@ while read -r line; do
     fi
 
     # Execute the script with pseudo-terminal allocation
-    ssh -t "$USER@$host" "bash ~/$SCRIPT"
+    ssh -tt "$USER@$host" "bash ~/$SCRIPT"
     if [ $? -ne 0 ]; then
         echo "Failed to execute script on $host"
         continue
