@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <string.h>
 
 int main(int argc, char* argv[]) {
     int rank, size, data;
