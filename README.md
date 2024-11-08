@@ -14,28 +14,7 @@ Nodes are connected to the same network with SSH sharing enabled.
 - Executed the MPI program across all nodes.
 
 
-## Create hosts.txt file in the master node
-
-> [!TIP]
-> Make sure to change the start IP in the `create_hosts.sh` script to a valid IP address for your network.
-
-Log in as the `mpi` user:
-
-```bash
-su mpi
-```
-
-
-Run the `create_hosts.sh` script to create the `hosts.txt` file in the user's home directory.
-
-This script will create a list of IP addresses and slots in the `hosts.txt` file.
-
-```bash
-./scripts/create_hosts.sh <start_ip> <number_of_hosts>
-```
-
-
-## Install Open MPI and create user in each node
+## Install Open MPI and create user in the main node
 
 
 > [!TIP]
@@ -69,6 +48,28 @@ Check if Open MPI is installed:
 mpirun --version
 ```
 
+## Create hosts.txt file in the main node
+
+> [!TIP]
+> Make sure to change the start IP in the `create_hosts.sh` script to a valid IP address for your network.
+
+Log in as the `mpi` user:
+
+```bash
+su mpi
+```
+
+Run the `create_hosts.sh` script to create the `hosts.txt` file in the user's home directory.
+
+This script will create a list of IP addresses and slots in the `hosts.txt` file.
+
+```bash
+./scripts/create_hosts.sh <start_ip> <number_of_hosts>
+```
+
+
+## Install Open MPI and create user in each node
+
 Now repeat the steps in each node. Use the utility script `run_on_multiple_hosts.sh` to copy and execute a script on multiple hosts via SSH.
 
 Make the script executable:
@@ -86,7 +87,7 @@ Run the script in the master node, make sure the `hosts.txt` is in the same dire
 ## Compile the MPI program on each node
 
 
-Compile the MPI program on the master node:
+Compile the MPI program on the main node:
 
 Make the script executable:
 
@@ -94,7 +95,7 @@ Make the script executable:
 chmod +x compile.sh
 ```
 
-Run the script in the master node:
+Run the script in the main node:
 
 ```bash
 ./compile.sh 
@@ -113,7 +114,7 @@ Now repeat the steps in each node. Use the utility script `run_on_multiple_hosts
 ## Run the MPI program across all nodes
 
 
-With the `hosts.txt` file in the master node, run the MPI program in the master node:
+With the `hosts.txt` file in the main node, run the MPI program in the main node:
 
 All nodes must have the `mpi_test` executable in their home directory in the `mpi` user.
 
